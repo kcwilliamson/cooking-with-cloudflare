@@ -1,6 +1,6 @@
-import { Module } from './types';
+import { Tutorial } from './types';
 
-export const modules: Module[] = [
+export const modules: Tutorial[] = [
   {
     id: 'workers-101',
     title: 'Getting Started with Cloudflare Workers',

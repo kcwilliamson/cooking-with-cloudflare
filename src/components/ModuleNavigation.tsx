@@ -1,8 +1,8 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { Module } from '../types';
+import { Tutorial } from '../types';
 
 interface ModuleNavigationProps {
-  modules: Module[];
+  modules: Tutorial[];
   currentModuleId: string;
   onModuleChange: (moduleId: string) => void;
 }

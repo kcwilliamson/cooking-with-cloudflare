@@ -1,14 +1,15 @@
 export interface Tutorial {
   id: string;
   title: string;
-  author: string;
+  author?: string;
   videoUrl: string;
   videoPoster?: string;
   description: string;
-  totalTime: string;
+  totalTime?: string;
+  duration?: string;
   prepTime?: string;
   cookTime?: string;
-  difficulty: 'Easy' | 'Intermediate' | 'Advanced';
+  difficulty: 'Easy' | 'Intermediate' | 'Advanced' | 'Beginner';
   overview: string;
   yield?: string;
   ingredients: Ingredient[];
@@ -16,7 +17,7 @@ export interface Tutorial {
   rating: number;
   ratingCount: number;
   comments: Comment[];
-  moduleId: string;
+  moduleId?: string;
   featured?: boolean;
   updatedDate?: string;
 }
