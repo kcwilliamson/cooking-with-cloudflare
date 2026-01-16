@@ -54,10 +54,9 @@ export default function ModulePage() {
                 <Bookmark className="w-4 h-4 text-gray-700" />
               </button>
             </div>
-            <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-gray-700 transition-colors">
+            <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors">
               {tutorial.title}
             </h3>
-            <div className="text-sm text-gray-600 mb-1">{tutorial.author}</div>
             <div className="flex items-center gap-2 text-sm mb-1">
               <div className="flex items-center">
                 {[...Array(5)].map((_, i) => (

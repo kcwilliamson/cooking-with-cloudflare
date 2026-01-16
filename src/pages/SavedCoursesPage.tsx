@@ -127,10 +127,9 @@ export default function SavedCoursesPage() {
                       </div>
                     )}
                   </div>
-                  <h3 className="font-semibold text-gray-900 mb-1 line-clamp-2 group-hover:text-cloudflare-orange transition-colors">
+                  <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2 group-hover:text-cloudflare-orange transition-colors">
                     {course.title}
                   </h3>
-                  <p className="text-sm text-gray-600 mb-1">{course.author}</p>
                   <div className="flex items-center gap-2 text-sm">
                     <span className="text-gray-600">{course.totalTime}</span>
                     {course.rating && (
