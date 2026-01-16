@@ -4,19 +4,13 @@
 
 @layer base {
   body {
-    @apply bg-masterclass-black text-white antialiased;
-    font-feature-settings: 'kern', 'liga', 'clig', 'calt';
-  }
-  
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-display;
-    letter-spacing: -0.02em;
+    @apply bg-white text-gray-900;
   }
 }
 
 @layer components {
   .recipe-step {
-    @apply mb-6 pb-6 border-b border-masterclass-gray last:border-b-0;
+    @apply mb-6 pb-6 border-b border-gray-200 last:border-b-0;
   }
   
   .ingredient-item {
@@ -28,22 +22,6 @@
   }
   
   .comment-box {
-    @apply border border-masterclass-gray rounded-lg p-4 mb-4 bg-masterclass-charcoal;
-  }
-  
-  .masterclass-card {
-    @apply bg-masterclass-charcoal rounded-lg overflow-hidden transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl;
-  }
-  
-  .masterclass-button {
-    @apply px-6 py-3 rounded-md font-semibold transition-all duration-200;
-  }
-  
-  .masterclass-button-primary {
-    @apply masterclass-button bg-white text-masterclass-black hover:bg-gray-100;
-  }
-  
-  .masterclass-button-secondary {
-    @apply masterclass-button border-2 border-white text-white hover:bg-white hover:text-masterclass-black;
+    @apply border border-gray-300 rounded-lg p-4 mb-4;
   }
 }
