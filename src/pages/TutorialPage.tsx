@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { useState } from 'react';
-import { Star, Bookmark, Share2, Play, Pause, ClipboardList, X } from 'lucide-react';
-import { allTutorials } from '../curriculumData';
+import { Star, Bookmark, Share2, Play, Pause, ClipboardList, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { allTutorials, allModuleCollections } from '../curriculumData';
 
 export default function TutorialPage() {
   const { tutorialId } = useParams();
@@ -38,23 +38,81 @@ export default function TutorialPage() {
     return <div className="max-w-7xl mx-auto px-4 py-8">Tutorial not found</div>;
   }
 
+  // Get module information
+  const currentModule = allModuleCollections.find(
+    module => module.id === tutorial.moduleId
+  );
+
   // Get all tutorials in the same module
   const moduleTutorials = allTutorials.filter(
     t => t.moduleId === tutorial.moduleId
   );
+
+  // Find current tutorial index and get prev/next
+  const currentIndex = moduleTutorials.findIndex(t => t.id === tutorial.id);
+  const previousTutorial = currentIndex > 0 ? moduleTutorials[currentIndex - 1] : null;
+  const nextTutorial = currentIndex < moduleTutorials.length - 1 ? moduleTutorials[currentIndex + 1] : null;
 
   return (
     <div className="bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           <div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-3">
+            {/* Module Context */}
+            {currentModule && (
+              <div className="mb-4">
+                <Link 
+                  to={`/module/${currentModule.id}`}
+                  className="text-sm font-semibold text-cloudflare-orange hover:text-orange-600 transition-colors uppercase tracking-wide"
+                >
+                  {currentModule.title}
+                </Link>
+                <div className="text-sm text-gray-600 mt-1">
+                  Course {currentIndex + 1} of {moduleTutorials.length}
+                </div>
+              </div>
+            )}
+
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">
               {tutorial.title}
             </h1>
-            <div className="text-sm text-gray-600 mb-6">
-              By <span className="font-medium">{tutorial.author}</span>
-              {tutorial.updatedDate && (
-                <span className="ml-2">• Updated {tutorial.updatedDate}</span>
+
+            {/* Navigation Buttons */}
+            <div className="flex items-center gap-3 mb-6">
+              {previousTutorial ? (
+                <Link
+                  to={`/tutorial/${previousTutorial.id}`}
+                  className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                  Previous
+                </Link>
+              ) : (
+                <button
+                  disabled
+                  className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-md text-sm font-medium text-gray-400 cursor-not-allowed"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                  Previous
+                </button>
+              )}
+
+              {nextTutorial ? (
+                <Link
+                  to={`/tutorial/${nextTutorial.id}`}
+                  className="flex items-center gap-2 px-4 py-2 bg-cloudflare-orange text-white rounded-md text-sm font-medium hover:bg-orange-600 transition-colors"
+                >
+                  Next
+                  <ChevronRight className="w-4 h-4" />
+                </Link>
+              ) : (
+                <button
+                  disabled
+                  className="flex items-center gap-2 px-4 py-2 bg-gray-200 text-gray-400 rounded-md text-sm font-medium cursor-not-allowed"
+                >
+                  Next
+                  <ChevronRight className="w-4 h-4" />
+                </button>
               )}
             </div>
           </div>
