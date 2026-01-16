@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, ChevronDown } from 'lucide-react';
+import { Search, ChevronDown, LogOut } from 'lucide-react';
 
-export default function Header() {
+interface HeaderProps {
+  onLogout?: () => void;
+}
+
+export default function Header({ onLogout }: HeaderProps) {
   const [showLiveClassesDropdown, setShowLiveClassesDropdown] = useState(false);
 
   return (
@@ -62,12 +66,15 @@ export default function Header() {
             <Link to="/index" className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">
               Index
             </Link>
-            <button className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">
-              Log in
-            </button>
-            <button className="bg-cloudflare-orange text-white px-4 py-2 rounded text-sm font-medium hover:bg-orange-600 transition-colors">
-              Create a free account
-            </button>
+            {onLogout && (
+              <button 
+                onClick={onLogout}
+                className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
+              >
+                <LogOut className="w-4 h-4" />
+                Log out
+              </button>
+            )}
           </nav>
         </div>
       </div>
