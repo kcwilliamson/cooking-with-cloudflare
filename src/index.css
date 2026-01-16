@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white text-gray-900;
+  }
+}
+
+@layer components {
+  .recipe-step {
+    @apply mb-6 pb-6 border-b border-gray-200 last:border-b-0;
+  }
+  
+  .ingredient-item {
+    @apply flex items-start gap-2 mb-2;
+  }
+  
+  .rating-star {
+    @apply cursor-pointer transition-colors hover:text-yellow-500;
+  }
+  
+  .comment-box {
+    @apply border border-gray-300 rounded-lg p-4 mb-4;
+  }
+}
